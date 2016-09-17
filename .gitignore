@@ -1,2 +1,8 @@
-.idea/*
+.idea/
 .DS_Store
+
+tmp/
+log/
+db/test.sqlite3
+db/development.sqlite3
+
