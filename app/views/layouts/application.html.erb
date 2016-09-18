@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Libapp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -8,6 +9,10 @@
 </head>
 <body>
 
+<% if notice %>
+    <p id="notice"><%= notice %></p>
+<% end %>
+<p id ="session"><%= "Welcome to libapp : "+session[:user_name]%>
 <%= yield %>
 
 </body>

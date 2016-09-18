@@ -1,2 +1,6 @@
 <h1>Welcome to 517 page</h1>
 
+<%= link_to 'Login as member', members_login_url %>
+<% if session[:user_id]%>
+<%= link_to 'Show Profile', members_show_profile_url%>
+<%end%>

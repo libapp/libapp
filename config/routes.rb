@@ -3,6 +3,21 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+
+  get 'members' => 'members#index'
+  get 'member' => 'members#index'
+  resources :members
+  #get 'members/login_page' #=> 'members#new'
+  #post 'members/login_page' => 'members#login_page'
+
+  controller :members do
+    get  'members_login' => :login_page
+    post 'members_login' => :login
+    get  'members_sign_up' => :sign_up_page
+    post 'members_sign_up' => :sign_up
+    get  'members_show_profile' => :show_profile
+    post 'members_show_profile' => :edit_profile
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

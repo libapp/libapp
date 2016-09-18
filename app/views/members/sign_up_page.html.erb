@@ -1,0 +1,39 @@
+<h1>New user</h1>
+
+
+<%= form_tag do %>
+    <fieldset>
+      <legend>Please Sign Up</legend>
+      <div class="group wat-cf">
+        <div class="left">
+          <%= label_tag :name, 'Name:' %>
+        </div>
+        <div class="right">
+          <%= text_field_tag :name, params[:name] %>
+        </div>
+      </div>
+
+      <div class="group wat-cf">
+        <div class="left"><%= label_tag :email, 'Email:' %></div>
+        <div class="right"><%= text_field_tag :email, params[:email] %></div>
+      </div>
+
+      <div class="group wat-cf">
+        <div class="left"><%= label_tag :password, 'Password:' %></div>
+        <div class="right"><%= password_field_tag :password, params[:password] %></div>
+      </div>
+
+      <div class="group wat-cf">
+        <div class="left"><%= label_tag :password_confirmation, 'Password confirmation:' %></div>
+        <div class="right"><%= password_field_tag :password_confirmation, params[:password_confirmation] %></div>
+      </div>
+
+
+
+      <div class="group wat-cf">
+        <div class="right"><div class="button"><%= submit_tag "Sign Up" %></div></div>
+      </div>
+    </fieldset>
+<% end %>
+<%= link_to 'Login as member', members_login_url %>
+<%= link_to 'Welcome', welcome_index_path%>

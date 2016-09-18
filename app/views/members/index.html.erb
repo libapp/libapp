@@ -1,0 +1,6 @@
+<h1> Member's homepage </h1>
+
+<%= link_to 'Welcome', welcome_index_path%>
+<% if session[:user_id]%>
+    <%= link_to 'Show Profile', members_show_profile_url%>
+<%end%>

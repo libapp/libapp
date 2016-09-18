@@ -10,7 +10,7 @@ class MembersControllerTest < ActionController::TestCase
                          password: "foobar", password_confirmation: "foobar")
   end
 
-  test "Member should be able to login" do
+  test "Member should be able to login_page" do
 
   end
 
