@@ -1,0 +1,30 @@
+<p>
+  <strong>Email:</strong>
+  <%= @admin.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admin.name %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <% if @admin.level == 0 %>
+      Super admin
+  <% else %>
+      Normal admin
+  <% end %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <% if @admin.status == 0 %>
+      Default
+  <% else %>
+      Deleted
+  <% end %>
+</p>
+
+<%= link_to 'Back', admins_path %>
+<%= link_to 'Edit', edit_admin_path(@admin) %>

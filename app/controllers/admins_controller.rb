@@ -1,55 +1,51 @@
 class AdminsController < ApplicationController
-  #before_action :
-
-
-  def login
-  end
+  before_action :authorize_admin
 
   def index
+    @admins = Admin.all
   end
 
-
-#admin homepage
-  def edit_profile
+  def new
+    @admin = Admin.new
   end
 
-  def update_profile
+  def create
+    @admin = Admin.new(admin_params)
+
+    if @admin.save
+      redirect_to @admin
+    else
+      render 'new'
+    end
   end
 
+  def edit
+    @admin = Admin.find(params[:id])
+  end
+
+  def update
+    @admin = Admin.find(params[:id])
+    if @admin.update(admin_params)
+      redirect_to @admin
+    else
+      render "edit"
+    end
+  end
+
+  def show
+    @admin = Admin.find(params[:id])
+  end
+
+  def destroy
+    @admin = Admin.find(params[:id])
+    @admin.update_attribute :status, 1
+    redirect_to @admin
+  end
 
 
 #manage admin
   def show_admins
-  end
-
-  def show_admin_profile
-  end
-
-
-  def delete_admin
-  end
-
-  def creat_admin
-  end
-
-
-#manage rooms
-  def show_rooms
-  end
-
-  def edit_room
-  end
-
-  def update_room
-  end
-
-  def creat_room
-  end
-
-  def show_room_history
-  end
-
-  def delete_room
+    @admins = Admin.where.not(id: 1)
   end
 
 #manage members
@@ -62,5 +58,10 @@ class AdminsController < ApplicationController
   def delete_member
   end
 
+  private
+
+  def admin_params
+    params.require(:admin).permit(:id, :email, :name, :password, :level, :status)
+  end
 
 end

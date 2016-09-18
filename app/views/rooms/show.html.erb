@@ -1,0 +1,35 @@
+<p>
+  <strong>Number:</strong>
+  <%= @room.number %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @room.size %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <% if @room.building == 0 %>
+      D.H.Hill
+  <% else %>
+      James.B.Hunt
+  <% end %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <% if @room.status == 0 %>
+      Default
+  <% else %>
+      Deleted
+  <% end %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @room.admin %>
+</p>
+
+<%= link_to 'Back', rooms_path %>
+<%= link_to 'Edit', edit_room_path(@room) %>
