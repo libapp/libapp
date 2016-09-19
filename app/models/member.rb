@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
+  after_initialize :set_defaults
+
   has_many :schedules
   has_many :rooms, through: :schedules
 
@@ -10,4 +12,8 @@ class Member < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+  def set_defaults
+    self.status  ||= 0
+  end
 end

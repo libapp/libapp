@@ -1,0 +1,20 @@
+<p>
+  <strong>Email:</strong>
+  <%= @member.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <% if @member.status == 0 %>
+      Default
+  <% else %>
+      Deleted
+  <% end %>
+</p>
+
+<%= link_to 'Back', members_path %>

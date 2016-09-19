@@ -1,0 +1,26 @@
+<h1>ADMIN INDEX WEBPAGE</h1>
+
+<h1>
+  <% if current_admin %>
+      Current admin id is <%= current_admin.id %>
+  <% end %>
+</h1>
+
+<h1>
+  <%= link_to "Logout", 'admins/logout' %>
+</h1>
+<h1>
+  <%= link_to "Show my profile", "admins/#{current_admin.id}" %>
+</h1>
+<h1>
+  <%= link_to "Edit my profile", "admins/#{current_admin.id}/edit" %>
+</h1>
+<h1>
+  <%= link_to "Manage all admins", "admins/show/admins" %>
+</h1>
+<h1>
+  <%= link_to "Manage all rooms", "rooms" %>
+</h1>
+<h1>
+  <%= link_to "Manage all members", "members" %>
+</h1>

@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-
   root 'welcome#index'
+
+  get 'welcome/index' => 'welcome#index'
+
+  # these routes are for showing users a login form, logging them in, and logging them out.
+  get 'admins/login' => 'sessions#new'
+  post 'admins/login' => 'sessions#create'
+  get 'admins/logout' => 'sessions#destroy'
+
+  resources :admins, :members
+
+  resources :rooms, param: :number
+
+  get 'admins/show/admins' => 'admins#show_admins'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

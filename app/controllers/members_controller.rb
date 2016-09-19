@@ -1,35 +1,43 @@
 class MembersController < ApplicationController
 
-  def login
-
+  def index
+    @members = Member.all
   end
 
-  def show_profile
-
+  def new
+    @member = Member.new
   end
 
-  def edit_profile
-
+  def create
+    @member = Member.new(member_params)
+    if @member.save
+      redirect_to @member
+    else
+      render 'edit'
+    end
   end
 
-  def show_reservation_history
-
+  def edit
+    @member = Member.find(params[:id])
   end
 
-  def search_room
-
+  def update
+    @member = Member.find(params[:id])
+    if @member.update(room_params)
+      redirect_to @member
+    else
+      render 'edit'
+    end
   end
 
-  def show_room_detail
-
+  def show
+    @member = Member.find(params[:id])
   end
 
-  def release_room
-
-  end
-
-  def book_room
-
+  def destroy
+    @member = Member.find(params[:id])
+    @member.update_attribute :status, 1
+    redirect_to @member
   end
 
 

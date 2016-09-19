@@ -1,4 +1,5 @@
 class Admin < ActiveRecord::Base
+  after_initialize :set_defaults
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -7,4 +8,9 @@ class Admin < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+  def set_defaults
+    self.level  ||= 1
+    self.status  ||= 0
+  end
 end

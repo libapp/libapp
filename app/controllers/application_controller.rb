@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # logout and redirect to homepage
-  def log_out
-
+  def current_admin
+    @current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
   end
+  helper_method :current_admin
+
+  def authorize_admin
+    redirect_to '/admins' unless current_admin
+  end
+
 end

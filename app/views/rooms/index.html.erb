@@ -1,0 +1,28 @@
+<h1>Listing rooms</h1>
+
+<%= link_to 'Create a new room', new_room_path %>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Size</th>
+    <th>Building</th>
+    <th>Status</th>
+    <th>Admin</th>
+    <th colspan="2"></th>
+  </tr>
+
+  <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.number %></td>
+        <td><%= room.size %></td>
+        <td><% if room.building == 0 %> D.H.Hill <% else %> James.B.Hunt <% end %></td>
+        <td><% if room.status == 0 %> Default <% else %> Deleted <% end %></td>
+        <td><%= link_to 'Show', room_path(room) %></td>
+        <td><%= link_to 'Edit', edit_room_path(room) %></td>
+        <td><%= link_to 'Delete', room_path(room), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back', admins_path %>
