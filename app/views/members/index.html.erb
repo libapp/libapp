@@ -1,22 +1,19 @@
-<h1>Listing members</h1>
+<h1>MEMBER INDEX WEBPAGE</h1>
 
-<table>
-  <tr>
-    <th>Email</th>
-    <th>Name</th>
-    <th>Status</th>
-    <th colspan="2"></th>
-  </tr>
-
-  <% @members.each do |member| %>
-      <tr>
-        <td><%= member.email %></td>
-        <td><%= member.name %></td>
-        <td><% if member.status == 0 %> Default <% else %> Deleted <% end %></td>
-        <td><%= link_to 'Show', member_path(member) %></td>
-        <td><%= link_to 'Delete', member_path(member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<h1>
+  <% if current_member %>
+      Current member name is <%= current_member.name %>
   <% end %>
-</table>
+</h1>
 
-<%= link_to 'Back', admins_path %>
+<h1>
+  <%= link_to "Logout", 'members/logout' %>
+</h1>
+
+<h1>
+<%= link_to 'Show Profile', member_path(current_member) %>
+</h1>
+
+<h1>
+  <%= link_to 'Edit Profile', edit_member_path(current_member) %>
+</h1>
