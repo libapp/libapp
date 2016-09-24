@@ -9,6 +9,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
+    @schedules = Schedule.where(:member_id => current_member.id)
   end
 
   def edit
@@ -21,6 +22,6 @@ class ReservationsController < ApplicationController
   end
 
   def history
-
+      @schedules = Schedule.where(:member_id => current_member.id)
   end
 end

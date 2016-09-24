@@ -1,1 +1,29 @@
 <h1>Your room reservation history</h1>
+<table>
+  <tr>
+    <th>Room number</th>
+    <th> Building </th>
+    <th>Size</th>
+    <th>Start at</th>
+    <th>End at</th>
+    <th colspan="5"></th>
+  </tr>
+
+  <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.room_number %></td>
+        <% room = Room.find_by_number(schedule.room_number)%>
+        <% if @room.building == 0 %>
+            <td>D.H.Hill</td>
+        <% else %>
+            <td>James.B.Hunt</td>
+        <% end %>
+
+        <td><%= room.size%></td>
+        <td><%= schedule.start_at %></td>
+        <td><%= schedule.end_at%></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back to member', members_path %>
