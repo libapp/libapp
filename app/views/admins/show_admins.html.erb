@@ -1,27 +1,105 @@
-<h1>Listing admins</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Room App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<div class="header">
+	     <div class="container">
+	        <div class="row">
+	           <div class="col-md-5">
+	              <!-- Logo -->
+	              <div class="logo">
+	                 <h1><a href="index.html">Room App</a></h1>
+	              </div>
+	           </div>
+	           <div class="col-md-5">
+	              <div class="row">
+	                <div class="col-lg-12">
+	                  <div class="input-group form">
+	                       <input type="text" class="form-control" placeholder="Search...">
+	                       <span class="input-group-btn">
+	                         <button class="btn btn-primary" type="button">Search</button>
+	                       </span>
+	                  </div>
+	                </div>
+	              </div>
+	           </div>
+	        </div>
+	     </div>
+	</div>
 
-<%= link_to 'Create a new admin', new_admin_path %>
+    <div class="page-content">
+    	<div class="row">
+		  <div class="col-md-2">
+		  	<div class="sidebar content-box" style="display: block;">
+                <ul class="nav">
+                    <!-- Main menu -->
+                    <li class="/admins/index"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                    <li><a href="/admins/profile"><i class="glyphicon glyphicon-calendar"></i> Profile</a></li>
+                    <li><a href="/admins/manage"><i class="glyphicon glyphicon-stats"></i> Admins</a></li>
+                    <li><a href="/admins/rooms"><i class="glyphicon glyphicon-list"></i> Rooms</a></li>
+                    <li><a href="/admins/manage"><i class="glyphicon glyphicon-record"></i> Members</a></li>
+                    <li><a href="/login/login"><i class="glyphicon glyphicon-pencil"></i> Logout</a></li>
+                </ul>
+             </div>
+		  </div>
+		  <div class="col-md-10">
 
-<table>
-  <tr>
-    <th>Email</th>
-    <th>Name</th>
-    <th>Level</th>
-    <th>Status</th>
-    <th colspan="2"></th>
-  </tr>
+  			<div class="content-box-large">
+  				<div class="panel-heading">
+					<div class="panel-title">Members table</div>
+					<div class="panel-options">
+						<a class="btn btn-primary btn-sm" href="<%= new_admin_path %>" role="button">Create Admin</a>
+					</div>
+				</div>
+  				<div class="panel-body">
+  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+						<thead>
+							<tr>
+								<th>Email</th>
+							    <th>Name</th>
+							    <th>Level</th>
+							    <th>Status</th>
+							    <th colspan="2"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @admins.each do |admin| %>
+						      <tr>
+						        <td><%= admin.email %></td>
+						        <td><%= admin.name %></td>
+						        <td><% if admin.level == 0 %> Super admin <% else %> Normal admin <% end %></td>
+						        <td><% if admin.status == 0 %> Default <% else %> Deleted <% end %></td>
+						        <td><%= link_to 'Show', admin_path(admin) %></td>
+						        <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
+						        <td><%= link_to 'Delete', admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						      </tr>
+							<% end %>
+						</tbody>
+					</table>
+  				</div>
+  			</div>
+		  </div>
+		</div>
+    </div>
 
-  <% @admins.each do |admin| %>
-      <tr>
-        <td><%= admin.email %></td>
-        <td><%= admin.name %></td>
-        <td><% if admin.level == 0 %> Super admin <% else %> Normal admin <% end %></td>
-        <td><% if admin.status == 0 %> Default <% else %> Deleted <% end %></td>
-        <td><%= link_to 'Show', admin_path(admin) %></td>
-        <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
-        <td><%= link_to 'Delete', admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
-
-<%= link_to 'Back', admins_path %>
+    <footer>
+         <div class="container">
+         
+            <div class="copy text-center">
+               Copyright 2014 <a href='#'>Website</a>
+            </div>
+            
+         </div>
+      </footer>
+  </body>
+</html>
