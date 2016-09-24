@@ -19,4 +19,8 @@ class ReservationsController < ApplicationController
 
   def destroy
   end
+
+  def history
+
+  end
 end
