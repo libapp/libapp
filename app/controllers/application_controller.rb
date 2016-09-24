@@ -12,4 +12,14 @@ class ApplicationController < ActionController::Base
     redirect_to '/admins' unless current_admin
   end
 
+
+  def current_member
+    @current_member ||= Member.find(session[:member_id]) if session[:member_id]
+  end
+  helper_method :current_member
+
+  def authorize_member
+    redirect_to '/members' unless current_member
+  end
+
 end
