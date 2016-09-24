@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
-
+  before_action :authorize_member
+  skip_before_action :authorize_member , only: [:new, :create,:show]
   def index
     @members = Member.all
   end
@@ -11,9 +12,9 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     if @member.save
-      redirect_to @member
+      redirect_to members_login_path
     else
-      render 'edit'
+      render 'new'
     end
   end
 
@@ -23,7 +24,7 @@ class MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    if @member.update(room_params)
+    if @member.update(member_params)
       redirect_to @member
     else
       render 'edit'
@@ -38,6 +39,12 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.update_attribute :status, 1
     redirect_to @member
+  end
+
+  private
+
+  def member_params
+    params.require(:member).permit(:id, :email, :name, :password, :password_confirmation)
   end
 
 

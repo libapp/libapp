@@ -17,4 +17,8 @@
   <% end %>
 </p>
 
-<%= link_to 'Back', members_path %>
+<% if current_admin %>
+    <%= link_to 'Back to admin', admins_show_members_path %>
+<% else %>
+  <%= link_to 'Back to member', members_path %>
+<% end %>

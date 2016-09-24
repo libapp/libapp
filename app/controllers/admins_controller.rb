@@ -50,6 +50,7 @@ class AdminsController < ApplicationController
 
 #manage members
   def show_members
+    @members = Member.all
   end
 
   def show_member_profile
