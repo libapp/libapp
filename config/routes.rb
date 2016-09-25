@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   post 'members/login'=> 'member_sessions#create'
   get 'members/logout'=> 'member_sessions#destroy'
 
+
+  get 'reservations/history' => 'reservations#history'
+
   resources :admins, :members, :reservations
 
   resources :rooms, param: :number
@@ -19,7 +22,6 @@ Rails.application.routes.draw do
   get 'admins/show/admins' => 'admins#show_admins'
   get 'admins/show/members' => 'admins#show_members'
 
-  get 'reservations/history' => 'admins#history'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
