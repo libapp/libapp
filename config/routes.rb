@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   get 'members/logout'=> 'member_sessions#destroy'
 
 
-  get 'reservations/history' => 'reservations#history'
+  get 'schedules/history' => 'schedules#history'
 
-  resources :admins, :members, :reservations
+  resources :admins, :members, :schedules
 
   resources :rooms, param: :number
 
