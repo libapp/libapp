@@ -30,10 +30,9 @@
 				<div class="login-wrapper">
 			        <div class="box">
 			            <div class="content-wrap">
-			                <h6>Sign Up</h6>
-			                <h1>Create a new member</h1>
+			                <h6>Create a new Admin</h6>
 
-							<%= form_for @admin do |f| %>
+							<!-- <%= form_for @admin do |f| %>
 							    <% if @admin.errors.any? %>
 							        <div id="error_explanation">
 							          <h2><%= pluralize(@admin.errors.count, "error") %> prohibited
@@ -63,7 +62,35 @@
 							    <p>
 							      <%= f.submit %>
 							    </p>
-							<% end %>          
+							<% end %> -->
+							<%= bootstrap_form_for(@admin) do |f| %>
+								<% if @admin.errors.any? %>
+							        <div id="error_explanation">
+							          <h2><%= pluralize(@admin.errors.count, "error") %> prohibited
+							            this admin from being saved:</h2>
+							          <ul>
+							            <% @admin.errors.full_messages.each do |msg| %>
+							                <li><%= msg %></li>
+							            <% end %>
+							          </ul>
+							        </div>
+							    <% end %>
+								<p>
+							      <%= f.text_field :name, placeholder: 'Admin Name' %>
+							    </p>
+							
+							    <p>
+							      <%= f.text_area :email, placeholder: 'E-mail address' %>
+							    </p>
+							
+							    <p>
+							      <%= f.password_field :password, placeholder: 'Password' %>
+							    </p>
+							
+							    <p>
+							     <%= f.submit "Submit", class: "btn btn-primary" %>
+							    </p>    
+							<% end %>
 			            </div>
 			        </div>
 

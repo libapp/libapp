@@ -29,8 +29,8 @@
 			  				<div class="panel-body">
 			  					<!-- <form action="">-->
 									<fieldset>
-									<%= form_for @admin do |f| %>
-									    <% if @admin.errors.any? %>
+									<%= bootstrap_form_for(@admin) do |f| %>
+										<% if @admin.errors.any? %>
 									        <div id="error_explanation">
 									          <h2><%= pluralize(@admin.errors.count, "error") %> prohibited
 									            this admin from being saved:</h2>
@@ -41,23 +41,17 @@
 									          </ul>
 									        </div>
 									    <% end %>
-									    <p>
-									      <%= f.label :name %><br>
-									      <%= f.text_field :name %>
+										<p>
+									      <%= f.text_field :name , class: "form-control" %>
 									    </p>
 									
 									    <p>
-									      <%= f.label :email %><br>
-									      <%= f.text_area :email %>
+									      <%= f.text_area :email , class: "form-control" %>
 									    </p>
-									
-									    <p>
-									      <%= f.submit %>
-									    </p>
+										<%= f.submit "Submit", class: "btn btn-primary" %>
 									<% end %>
 									</fieldset>
 									
-									<%= link_to 'Back', admins_path %>
 										<!--
 										<div class="form-group">
 											<label>Your Name</label>
@@ -109,16 +103,6 @@
 		  </div>
 		</div>
     </div>
-
-    <footer>
-         <div class="container">
-         
-            <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
-            </div>
-            
-         </div>
-      </footer>
-
+	<%= render 'footer' %>
   </body>
 </html>
