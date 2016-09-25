@@ -3,14 +3,8 @@
   <head>
     <title>Room App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
   </head>
+
   <body>
   	<div class="header">
 	     <div class="container">
@@ -18,7 +12,7 @@
 	           <div class="col-md-5">
 	              <!-- Logo -->
 	              <div class="logo">
-	                 <h1><a href="index.html">Room App</a></h1>
+	                 <h1><a href="/">Room App</a></h1>
 	              </div>
 	           </div>
 	           <div class="col-md-5">
@@ -43,122 +37,47 @@
 		  	<div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li class="/admins/index"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    <li><a href="/admins/profile"><i class="glyphicon glyphicon-calendar"></i> Profile</a></li>
-                    <li><a href="/admins/manage"><i class="glyphicon glyphicon-stats"></i> Admins</a></li>
-                    <li><a href="/admins/rooms"><i class="glyphicon glyphicon-list"></i> Rooms</a></li>
-                    <li><a href="/admins/manage"><i class="glyphicon glyphicon-record"></i> Members</a></li>
-                    <li><a href="/login/login"><i class="glyphicon glyphicon-pencil"></i> Logout</a></li>
+                    <li><a href="<%= edit_member_path(current_member) %>"><i class="glyphicon glyphicon-calendar"></i>Profile</a></li>
+                    <li><a href="/reservations"><i class="glyphicon glyphicon-list"></i>Rooms</a></li>
+                    <li><a href="/members/logout"><i class="glyphicon glyphicon-pencil"></i>Logout</a></li>
                 </ul>
              </div>
 		  </div>
 		  <div class="col-md-10">
-
 	  			<div class="row">
-	  				
 	  				<div class="col-md-10">
 	  					<div class="content-box-large">
-			  				<div class="panel-heading">
-					            <div class="panel-title">Profile setting</div>
-					        </div>
 			  				<div class="panel-body">
-			  					<!-- <form action="">-->
-									<fieldset>
-										<%= form_for @member do |f| %>
-										    <% if @member.errors.any? %>
-										        <div id="error_explanation">
-										          <h2><%= pluralize(@member.errors.count, "error") %> prohibited
-										            this admin from being saved:</h2>
-										          <ul>
-										            <% @member.errors.full_messages.each do |msg| %>
-										                <li><%= msg %></li>
-										            <% end %>
-										          </ul>
-										        </div>
-										    <% end %>
-										    <p>
-										      <%= f.label :name %><br>
-										      <%= f.text_field :name %>
-										    </p>
-										
-										    <p>
-										      <%= f.label :email %><br>
-										      <%= f.text_area :email %>
-										    </p>
-										
-										    <p>
-										      <%= f.label :password %><br>
-										      <%= f.text_area :password %>
-										    </p>
-										
-										    <p>
-										      <%= f.submit %>										      
-										    </p>
-										<% end %>
-									</fieldset>
-									
-									<%= link_to 'Back to member', members_path %>
-										<!--
-										<div class="form-group">
-											<label>Your Name</label>
-											<input class="form-control" placeholder="Enter your full name here" type="text" >
-										</div>
-										<div class="form-group">
-											<label>Student ID</label>
-											<input class="form-control" placeholder="Student ID" type="text">
-										</div>
-										<div class="form-group">
-											<label>User Name</label>
-											<input class="form-control" placeholder="Your user name" type="text">
-										</div>
-										<div class="form-group">
-											<label>Email</label>
-											<input class="form-control" placeholder="Email address" type="text">
-										</div>
-										<div class="form-group">
-											<label>Repeat Email</label>
-											<input class="form-control" placeholder="Repeat your email above" type="text">
-										</div>
-										<div class="form-group">
-											<label>Password field</label>
-											<input class="form-control" placeholder="Password" type="password" value="mypassword">
-										</div>
-										<div class="form-group">
-											<label>Repeat Password</label>
-											<input class="form-control" placeholder="Password" type="password" value="mypassword">
-										</div>
-										<div class="form-group">
-											<label>Introduction</label>
-											<textarea class="form-control" placeholder="Introduce yourself" rows="3"></textarea>
-										</div>
-										
-									</fieldset>
-									<div>
-										<div class="btn btn-primary">
-											Submit
-										</div>
-									</div>
-									
-								</form>
-								-->
+
+                  <% if @member.errors.any? %>
+                    <ul>
+                      <% @member.errors.full_messages.each do |msg| %>
+                          <li><h1><%= msg %></h1></li>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                  <%= bootstrap_form_for(@member) do |f| %>
+                      <%= f.text_field :name %>
+                      <%= f.email_field :email %>
+                      <%= f.password_field :password %>
+                      <%= f.submit "Update profile" %>
+                  <% end %>
+
 			  				</div>
 			  			</div>
 	  				</div>
 	  			</div>
-	  		<!--  Page content -->
 		  </div>
 		</div>
     </div>
 
-    <footer>
-         <div class="container">
-         
-            <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
-            </div>
-            
-         </div>
-      </footer>
+    <footer class="navbar-fixed-bottom">
+      <div class="container">
+        <div class="copy text-center">
+          Library Reservation System
+        </div>
+      </div>
+    </footer>
 
   </body>
 </html>
