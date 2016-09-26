@@ -3,104 +3,43 @@
   <head>
     <title>Room App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+
   </head>
   <body>
   	<%= render 'navbar' %>
 
     <div class="page-content">
     	<div class="row">
-		 <%= render 'menu' %>
-		  <div class="col-md-10">
+		    <%= render 'menu' %>
+        <div class="col-md-10">
+          <div class="page-content container">
+            <div class="row">
+              <div class="col-md-4 col-md-offset-4">
+                <div class="login-wrapper">
+                  <div class="box">
+                    <div class="content-wrap">
 
-	  			<div class="row">
-	  				
-	  				<div class="col-md-10">
-	  					<div class="content-box-large">
-			  				<div class="panel-heading">
-					            <div class="panel-title">Profile setting</div>
-					        </div>
-			  				<div class="panel-body">
-			  					<!-- <form action="">-->
-									<fieldset>
-									<%= bootstrap_form_for(@admin) do |f| %>
-										<% if @admin.errors.any? %>
-									        <div id="error_explanation">
-									          <h2><%= pluralize(@admin.errors.count, "error") %> prohibited
-									            this admin from being saved:</h2>
-									          <ul>
-									            <% @admin.errors.full_messages.each do |msg| %>
-									                <li><%= msg %></li>
-									            <% end %>
-									          </ul>
-									        </div>
-									    <% end %>
-										<p>
-									      <%= f.text_field :name , class: "form-control" %>
-									    </p>
-									
-									    <p>
-									      <%= f.text_area :email , class: "form-control" %>
-									    </p>
-										<%= f.submit "Submit", class: "btn btn-primary" %>
-									<% end %>
-									</fieldset>
-									
-										<!--
-										<div class="form-group">
-											<label>Your Name</label>
-											<input class="form-control" placeholder="Enter your full name here" type="text" >
-										</div>
-										<div class="form-group">
-											<label>Student ID</label>
-											<input class="form-control" placeholder="Student ID" type="text">
-										</div>
-										<div class="form-group">
-											<label>User Name</label>
-											<input class="form-control" placeholder="Your user name" type="text">
-										</div>
-										<div class="form-group">
-											<label>Email</label>
-											<input class="form-control" placeholder="Email address" type="text">
-										</div>
-										<div class="form-group">
-											<label>Repeat Email</label>
-											<input class="form-control" placeholder="Repeat your email above" type="text">
-										</div>
-										<div class="form-group">
-											<label>Password field</label>
-											<input class="form-control" placeholder="Password" type="password" value="mypassword">
-										</div>
-										<div class="form-group">
-											<label>Repeat Password</label>
-											<input class="form-control" placeholder="Password" type="password" value="mypassword">
-										</div>
-										<div class="form-group">
-											<label>Introduction</label>
-											<textarea class="form-control" placeholder="Introduce yourself" rows="3"></textarea>
-										</div>
-										
-									</fieldset>
-									<div>
-										<div class="btn btn-primary">
-											Submit
-										</div>
-									</div>
-									
-								</form>
-								-->
-			  				</div>
-			  			</div>
-	  				</div>
-	  			</div>
-	  		<!--  Page content -->
-		  </div>
+                      <% if @admin.errors.any? %>
+                          <ul>
+                            <% @admin.errors.full_messages.each do |msg| %>
+                                <li><h1><%= msg %></h1></li>
+                            <% end %>
+                          </ul>
+                      <% end %>
+                      <%= bootstrap_form_for(@admin) do |f| %>
+                          <%= f.text_field :name %>
+                          <%= f.email_field :email %>
+                          <%= f.password_field :password %>
+                          <%= f.submit "Update profile" %>
+                      <% end %>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 		</div>
     </div>
 	<%= render 'footer' %>

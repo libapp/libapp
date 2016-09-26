@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_member
 
   def authorize_member
-    redirect_to '/members' unless current_member
+    redirect_to '/members' unless current_member || current_admin
   end
 
 end

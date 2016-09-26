@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
 
   get 'schedules/history' => 'schedules#history'
+  get 'schedules/show_room' => 'schedules#show_room'
+  get 'admins/members/profile' => 'admins#members_profile'
 
   resources :admins, :members, :schedules
 

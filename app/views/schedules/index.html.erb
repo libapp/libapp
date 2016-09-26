@@ -65,12 +65,9 @@
               <%= f.select :size, [["All", "all"],["Small(4 chairs)", 0], ["Medium(6 chairs)", 1], ["Large(12 chairs)", 2]], {label: "Room Size"} %>
             </div>
             <div class="col-md-2">
-              <%= f.select :status, [["All", "all"],["Available", 0], ["Unavailable", 1]] %>
-            </div>
-            <div class="col-md-2">
               <%= f.text_field :room_number %>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
               <%= f.submit "Search", class: "btn btn-success btn-lg"%>
             </div>
         <% end %>
@@ -98,7 +95,7 @@
           <tbody>
             <% @table_schedules.each do |room_number, schedules| %>
               <tr>
-                <th scope="row"><%= link_to "#{room_number}", room_path(room_number) %></th>
+                <th scope="row"><%= link_to "#{room_number}", "/schedules/show_room?room_number=#{room_number}" %></th>
 
                 <% 14.times do |i| %>
                     <% if schedules[i] != 1 && ((schedules[i+1] != 1 && i<13) || (schedules[i-1] != 1 && i > 0)) %>

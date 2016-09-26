@@ -114,6 +114,10 @@ class SchedulesController < ApplicationController
     @schedules.reverse_order!
   end
 
+  def show_room
+    @room = Room.find(params[:room_number])
+  end
+
 
   private
 

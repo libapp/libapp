@@ -32,72 +32,37 @@
 			            <div class="content-wrap">
 			                <h6>Create a new Admin</h6>
 
-							<!-- <%= form_for @admin do |f| %>
-							    <% if @admin.errors.any? %>
-							        <div id="error_explanation">
-							          <h2><%= pluralize(@admin.errors.count, "error") %> prohibited
-							            this admin from being saved:</h2>
-							          <ul>
-							            <% @admin.errors.full_messages.each do |msg| %>
-							                <li><%= msg %></li>
-							            <% end %>
-							          </ul>
-							        </div>
-							    <% end %>
-							    <p>
-							      <%= f.label :name %><br>
-							      <%= f.text_field :name %>
-							    </p>
-							
-							    <p>
-							      <%= f.label :email %><br>
-							      <%= f.text_area :email %>
-							    </p>
-							
-							    <p>
-							      <%= f.label :password %><br>
-							      <%= f.text_area :password %>
-							    </p>
-							
-							    <p>
-							      <%= f.submit %>
-							    </p>
-							<% end %> -->
-							<%= bootstrap_form_for(@admin) do |f| %>
-								<% if @admin.errors.any? %>
-							        <div id="error_explanation">
-							          <h2><%= pluralize(@admin.errors.count, "error") %> prohibited
-							            this admin from being saved:</h2>
-							          <ul>
-							            <% @admin.errors.full_messages.each do |msg| %>
-							                <li><%= msg %></li>
-							            <% end %>
-							          </ul>
-							        </div>
-							    <% end %>
-								<p>
-							      <%= f.text_field :name, placeholder: 'Admin Name' %>
-							    </p>
-							
-							    <p>
-							      <%= f.text_area :email, placeholder: 'E-mail address' %>
-							    </p>
-							
-							    <p>
-							      <%= f.password_field :password, placeholder: 'Password' %>
-							    </p>
-							
-							    <p>
-							     <%= f.submit "Submit", class: "btn btn-primary" %>
-							    </p>    
-							<% end %>
+                      <%= bootstrap_form_for(@admin) do |f| %>
+                        <% if @admin.errors.any? %>
+                            <div id="error_explanation">
+                              <h6><%= pluralize(@admin.errors.count, "error") %> prohibited
+                                this admin from being saved:</h6>
+                              <ul>
+                                <% @admin.errors.full_messages.each do |msg| %>
+                                    <li><%= msg %></li>
+                                <% end %>
+                              </ul>
+                            </div>
+                        <% end %>
+                        <p>
+                          <%= f.text_field :name, placeholder: 'Admin Name' %>
+                        </p>
+
+                        <p>
+                          <%= f.text_field :email, placeholder: 'E-mail address' %>
+                        </p>
+
+                        <p>
+                          <%= f.password_field :password, placeholder: 'Password' %>
+                        </p>
+
+                        <p>
+                         <%= f.submit "Submit", class: "btn btn-primary" %>
+                        </p>
+                      <% end %>
 			            </div>
 			        </div>
 
-			        <div class="already">
-			            <p>Have an account already?</p>
-			            <%= link_to 'Back', admins_path %>
-			        </div>
 			    </div>
 			</div>
 		</div>

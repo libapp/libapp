@@ -3,13 +3,6 @@
   <head>
     <title>Room App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
   	<%= render 'navbar' %>
@@ -21,7 +14,7 @@
 
   			<div class="content-box-large">
   				<div class="panel-heading">
-					<div class="panel-title">Members table</div>
+					<div class="panel-title">Admins</div>
 					<div class="panel-options">
 						<a class="btn btn-primary btn-sm" href="<%= new_admin_path %>" role="button">Create Admin</a>
 					</div>
@@ -44,7 +37,6 @@
 						        <td><%= admin.name %></td>
 						        <td><% if admin.level == 0 %> Super admin <% else %> Normal admin <% end %></td>
 						        <td><% if admin.status == 0 %> Default <% else %> Deleted <% end %></td>
-						        <td><%= link_to 'Show', admin_path(admin) %></td>
 						        <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
 						        <td><%= link_to 'Delete', admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 						      </tr>

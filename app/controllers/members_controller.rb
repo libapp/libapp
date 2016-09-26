@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   before_action :authorize_member
-  skip_before_action :authorize_member , only: [:new, :create,:show]
+  skip_before_action :authorize_member , only: [:new, :create]
   def index
     @members = Member.all
   end
@@ -38,7 +38,7 @@ class MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     @member.update_attribute :status, 1
-    redirect_to @member
+    redirect_to '/admins/show/members'
   end
 
   private

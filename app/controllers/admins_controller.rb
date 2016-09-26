@@ -13,7 +13,7 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
 
     if @admin.save
-      redirect_to @admin
+      redirect_to "/admins/show/admins"
     else
       render 'new'
     end
@@ -26,7 +26,7 @@ class AdminsController < ApplicationController
   def update
     @admin = Admin.find(params[:id])
     if @admin.update(admin_params)
-      redirect_to @admin
+      redirect_to "/admins"
     else
       render "edit"
     end
@@ -39,7 +39,7 @@ class AdminsController < ApplicationController
   def destroy
     @admin = Admin.find(params[:id])
     @admin.update_attribute :status, 1
-    redirect_to @admin
+    redirect_to "/admins/show/admins"
   end
 
 
@@ -53,10 +53,8 @@ class AdminsController < ApplicationController
     @members = Member.all
   end
 
-  def show_member_profile
-  end
-
-  def delete_member
+  def members_profile
+    @member = Member.find(params[:member_id])
   end
 
   private
