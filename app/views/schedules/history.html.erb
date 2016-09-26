@@ -53,10 +53,11 @@
           <thead>
           <tr>
             <th>Room number</th>
-            <th> Building </th>
+            <th>Building</th>
             <th>Size</th>
             <th>Start at</th>
             <th>End at</th>
+            <th>Status</th>
           </tr>
           </thead>
           <tbody>
@@ -70,9 +71,23 @@
                     <td>James.B.Hunt</td>
                 <% end %>
 
-                <td><%= room.size%></td>
-                <td><%= schedule.start_at %></td>
-                <td><%= schedule.end_at%></td>
+                <% if room.size == 0 %>
+                    <td>Small</td>
+                <% elsif room.size == 1 %>
+                    <td>Medium</td>
+                <% else %>
+                    <td>Large</td>
+                <% end %>
+
+                            <td><%= schedule.start_at %></td>
+                <td><%= schedule.end_at %></td>
+                <% if schedule.status == 0 && (schedule.start_at > Time.new || (schedule.end_at > Time.new && schedule.start_at < Time.new)) %>
+                  <td><%= link_to 'Release', schedule_path(schedule), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% elsif schedule.status == 1 %>
+                  <td>Released</td>
+                <% elsif schedule.end_at < Time.new %>
+                  <td>Used</td>
+                <% end %>
               </tr>
           <% end %>
           </tbody>

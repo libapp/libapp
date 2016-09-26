@@ -9,6 +9,7 @@ class MemberSessionsController < ApplicationController
     if @member && @member.authenticate(params[:password])
       # Save the member id inside the browser cookie. This is how we keep the admin
       # logged in when they navigate around our website.
+      session[:admin_id] = nil
       session[:member_id] = @member.id
 
       redirect_to '/members'

@@ -45,9 +45,35 @@
       </div>
     </div>
     <div class="col-md-10">
-
+      <div>
+        <h3>
+          <% flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, class: name %>
+          <% end -%>
+        </h3>
+      </div>
       <!-- Page Features -->
       <div class="row text-center">
+        <%= bootstrap_form_tag method: 'get', url: '/schedules' do |f| %>
+            <div class="col-md-2">
+              <%= f.date_field :date, value: Time.new.strftime("%F") %>
+            </div>
+            <div class="col-md-2">
+              <%= f.select :building, [["All", "all"],["D.H.Hill Library", 0], ["James B.Hunt Jr.Library", 1]] %>
+            </div>
+            <div class="col-md-2">
+              <%= f.select :size, [["All", "all"],["Small(4 chairs)", 0], ["Medium(6 chairs)", 1], ["Large(12 chairs)", 2]], {label: "Room Size"} %>
+            </div>
+            <div class="col-md-2">
+              <%= f.select :status, [["All", "all"],["Available", 0], ["Unavailable", 1]] %>
+            </div>
+            <div class="col-md-2">
+              <%= f.text_field :room_number %>
+            </div>
+            <div class="col-md-2">
+              <%= f.submit "Search", class: "btn btn-success btn-lg"%>
+            </div>
+        <% end %>
 
         <table class="table table-striped table-bordered table-hover">
           <thead>
@@ -72,13 +98,13 @@
           <tbody>
             <% @table_schedules.each do |room_number, schedules| %>
               <tr>
-                <th scope="row"><%= room_number %></th>
+                <th scope="row"><%= link_to "#{room_number}", room_path(room_number) %></th>
 
                 <% 14.times do |i| %>
-                    <% if schedules[i] != 1 %>
-                      <td><a href="schedules/new?member_id=<%= current_member.id %>&room_number=<%= room_number %>&start_at=<%= i+8 %>:00&end_at=<%= i+10 %>:00">Book</a></td>
+                    <% if schedules[i] != 1 && ((schedules[i+1] != 1 && i<13) || (schedules[i-1] != 1 && i > 0)) %>
+                      <td><a href="schedules/new?member_id=<%= current_member.id %>&room_number=<%= room_number %>&start_at=<%= @date.beginning_of_day + (i+8).hours %>&end_at=<%= @date.beginning_of_day + (i+10).hours %>"><i class="glyphicon glyphicon-ok-sign"></i> </a></td>
                     <% else %>
-                      <td>X</td>
+                      <td><i class="glyphicon glyphicon-remove-sign"></i></td>
                     <% end %>
                 <% end %>
               </tr>
