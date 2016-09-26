@@ -1,30 +1,113 @@
-<p>
-  <strong>Email:</strong>
-  <%= @admin.email %>
-</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Room App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	
+  	<%= render 'navbar' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @admin.name %>
-</p>
+    <div class="page-content">
+    	<div class="row">
+		 <%= render 'menu' %>
+		  <div class="col-md-10">
 
-<p>
-  <strong>Level:</strong>
-  <% if @admin.level == 0 %>
-      Super admin
-  <% else %>
-      Normal admin
-  <% end %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <% if @admin.status == 0 %>
-      Default
-  <% else %>
-      Deleted
-  <% end %>
-</p>
-
-<%= link_to 'Back', admins_path %>
-<%= link_to 'Edit', edit_admin_path(@admin) %>
+	  			<div class="row">
+	  				
+	  				<div class="col-md-10">
+	  					<div class="content-box-large">
+			  				<div class="panel-heading">
+					            <div class="panel-title">Profile setting</div>
+					        </div>
+			  				<div class="panel-body">
+			  					<!-- <form action="">-->
+									<fieldset>
+									<p>
+									<strong>Email:</strong>
+									  <%= @admin.email %>
+									</p>
+									
+									<p>
+									  <strong>Name:</strong>
+									  <%= @admin.name %>
+									</p>
+									
+									<p>
+									  <strong>Level:</strong>
+									  <% if @admin.level == 0 %>
+									      Super admin
+									  <% else %>
+									      Normal admin
+									  <% end %>
+									</p>
+									
+									<p>
+									  <strong>Status:</strong>
+									  <% if @admin.status == 0 %>
+									      Default
+									  <% else %>
+									      Deleted
+									  <% end %>
+									</p>
+										<!--
+										<div class="form-group">
+											<label>Your Name</label>
+											<input class="form-control" placeholder="Enter your full name here" type="text" >
+										</div>
+										<div class="form-group">
+											<label>Student ID</label>
+											<input class="form-control" placeholder="Student ID" type="text">
+										</div>
+										<div class="form-group">
+											<label>User Name</label>
+											<input class="form-control" placeholder="Your user name" type="text">
+										</div>
+										<div class="form-group">
+											<label>Email</label>
+											<input class="form-control" placeholder="Email address" type="text">
+										</div>
+										<div class="form-group">
+											<label>Repeat Email</label>
+											<input class="form-control" placeholder="Repeat your email above" type="text">
+										</div>
+										<div class="form-group">
+											<label>Password field</label>
+											<input class="form-control" placeholder="Password" type="password" value="mypassword">
+										</div>
+										<div class="form-group">
+											<label>Repeat Password</label>
+											<input class="form-control" placeholder="Password" type="password" value="mypassword">
+										</div>
+										<div class="form-group">
+											<label>Introduction</label>
+											<textarea class="form-control" placeholder="Introduce yourself" rows="3"></textarea>
+										</div>
+										
+									</fieldset>
+									<div>
+										<div class="btn btn-primary">
+											Submit
+										</div>
+									</div>
+									
+								</form>
+								-->
+			  				</div>
+			  			</div>
+	  				</div>
+	  			</div>
+	  		<!--  Page content -->
+		  </div>
+		</div>
+    </div>
+    <%= render 'footer' %>
+  </body>
+</html>

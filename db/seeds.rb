@@ -34,3 +34,4 @@ Schedule.create(member_id: 7, room_number: 'HB21', start_at: "2016-09-24 22:35:1
 Room.create(number: 'HB211',size: 2, building: 2)
 Room.create(number: 'HB21',size: 1, building: 2)
 Room.create(number: 'HB2',size: 2, building: 1)
+

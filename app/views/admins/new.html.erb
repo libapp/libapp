@@ -1,5 +1,106 @@
-<h1>Create a new admin</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Room App</title>
 
-<%= render 'new_form' %>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="login-bg">
+  	<div class="header">
+	     <div class="container">
+	        <div class="row">
+	           <div class="col-md-12">
+	              <!-- Logo -->
+	              <div class="logo">
+	                 <h1><a href="index.html">Room App</a></h1>
+	              </div>
+	           </div>
+	        </div>
+	     </div>
+	</div>
 
-<%= link_to 'Back', admins_path %>
+	<div class="page-content container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-wrapper">
+			        <div class="box">
+			            <div class="content-wrap">
+			                <h6>Create a new Admin</h6>
+
+							<!-- <%= form_for @admin do |f| %>
+							    <% if @admin.errors.any? %>
+							        <div id="error_explanation">
+							          <h2><%= pluralize(@admin.errors.count, "error") %> prohibited
+							            this admin from being saved:</h2>
+							          <ul>
+							            <% @admin.errors.full_messages.each do |msg| %>
+							                <li><%= msg %></li>
+							            <% end %>
+							          </ul>
+							        </div>
+							    <% end %>
+							    <p>
+							      <%= f.label :name %><br>
+							      <%= f.text_field :name %>
+							    </p>
+							
+							    <p>
+							      <%= f.label :email %><br>
+							      <%= f.text_area :email %>
+							    </p>
+							
+							    <p>
+							      <%= f.label :password %><br>
+							      <%= f.text_area :password %>
+							    </p>
+							
+							    <p>
+							      <%= f.submit %>
+							    </p>
+							<% end %> -->
+							<%= bootstrap_form_for(@admin) do |f| %>
+								<% if @admin.errors.any? %>
+							        <div id="error_explanation">
+							          <h2><%= pluralize(@admin.errors.count, "error") %> prohibited
+							            this admin from being saved:</h2>
+							          <ul>
+							            <% @admin.errors.full_messages.each do |msg| %>
+							                <li><%= msg %></li>
+							            <% end %>
+							          </ul>
+							        </div>
+							    <% end %>
+								<p>
+							      <%= f.text_field :name, placeholder: 'Admin Name' %>
+							    </p>
+							
+							    <p>
+							      <%= f.text_area :email, placeholder: 'E-mail address' %>
+							    </p>
+							
+							    <p>
+							      <%= f.password_field :password, placeholder: 'Password' %>
+							    </p>
+							
+							    <p>
+							     <%= f.submit "Submit", class: "btn btn-primary" %>
+							    </p>    
+							<% end %>
+			            </div>
+			        </div>
+
+			        <div class="already">
+			            <p>Have an account already?</p>
+			            <%= link_to 'Back', admins_path %>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+  </body>
+</html>

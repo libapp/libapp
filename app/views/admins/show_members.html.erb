@@ -1,22 +1,55 @@
-<h1>Listing members</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Room App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<%= render 'navbar' %>
 
-<table>
-  <tr>
-    <th>Email</th>
-    <th>Name</th>
-    <th>Status</th>
-    <th colspan="2"></th>
-  </tr>
+    <div class="page-content">
+    	<div class="row">
+    	 <%= render 'menu' %>
+		  <div class="col-md-10">
 
-  <% @members.each do |member| %>
-      <tr>
-        <td><%= member.email %></td>
-        <td><%= member.name %></td>
-        <td><% if member.status == 0 %> Default <% else %> Deleted <% end %></td>
-        <td><%= link_to 'Show', member_path(member) %></td>
-        <td><%= link_to 'Delete', member_path(member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
-
-<%= link_to 'Back', admins_path %>
+  			<div class="content-box-large">
+  				<div class="panel-heading">
+					<div class="panel-title">Members table</div>
+				</div>
+  				<div class="panel-body">
+  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+						<thead>
+							<tr>
+								<th>Email</th>
+    							<th>Name</th>
+    							<th>Status</th>
+   								<th colspan="2"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @members.each do |member| %>
+						      <tr>
+						        <td><%= member.email %></td>
+						        <td><%= member.name %></td>
+						        <td><% if member.status == 0 %> Default <% else %> Deleted <% end %></td>
+						        <td><%= link_to 'Show', member_path(member) %></td>
+						        <td><%= link_to 'Delete', member_path(member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						      </tr>
+							<% end %>
+						</tbody>
+					</table>
+  				</div>
+  			</div>
+		  </div>
+		</div>
+    </div>
+	<%= render 'footer' %>
+  </body>
+</html>
