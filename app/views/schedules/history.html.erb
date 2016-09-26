@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Room App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <!-- Logo -->
+        <div class="logo">
+          <h1><a href="/">Room App</a></h1>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group form">
+              <input type="text" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+               <button class="btn btn-primary" type="button">Search</button>
+             </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar content-box" style="display: block;">
+        <ul class="nav">
+          <!-- Main menu -->
+          <li><a href="<%= edit_member_path(current_member) %>"><i class="glyphicon glyphicon-cog"></i> Profile </a></li>
+          <li><a href="/schedules"><i class="glyphicon glyphicon-calendar"></i> Reservation </a></li>
+          <li><a href="<%=schedules_history_path%>"><i class="glyphicon glyphicon-list"></i> History </a></li>
+          <li><a href="/members/logout"><i class="glyphicon glyphicon-hand-right"></i> Logout </a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10">
+
+      <!-- Page Features -->
+      <div class="row text-center">
+
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Room number</th>
+            <th>Building</th>
+            <th>Size</th>
+            <th>Start at</th>
+            <th>End at</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @schedules.each do |schedule| %>
+              <tr>
+                <td><%= schedule.room_number %></td>
+                <% room = Room.find_by_number(schedule.room_number)%>
+                <% if room.building == 0 %>
+                    <td>D.H.Hill</td>
+                <% else %>
+                    <td>James.B.Hunt</td>
+                <% end %>
+
+                <% if room.size == 0 %>
+                    <td>Small</td>
+                <% elsif room.size == 1 %>
+                    <td>Medium</td>
+                <% else %>
+                    <td>Large</td>
+                <% end %>
+
+                            <td><%= schedule.start_at %></td>
+                <td><%= schedule.end_at %></td>
+                <% if schedule.status == 0 && (schedule.start_at > Time.new || (schedule.end_at > Time.new && schedule.start_at < Time.new)) %>
+                  <td><%= link_to 'Release', schedule_path(schedule), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% elsif schedule.status == 1 %>
+                  <td>Released</td>
+                <% elsif schedule.end_at < Time.new %>
+                  <td>Used</td>
+                <% end %>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+      </div>
+
+      <!-- /.row -->
+
+      <hr>
+
+    </div>
+  </div>
+</div>
+
+<footer class="navbar-fixed-bottom">
+  <div class="container">
+    <div class="copy text-center">
+      Library Reservation System
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

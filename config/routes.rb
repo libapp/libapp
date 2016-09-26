@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'welcome#index'
 
   get 'welcome/index' => 'welcome#index'
@@ -13,12 +12,17 @@ Rails.application.routes.draw do
   post 'members/login'=> 'member_sessions#create'
   get 'members/logout'=> 'member_sessions#destroy'
 
-  resources :admins, :members
+
+  get 'schedules/history' => 'schedules#history'
+
+  resources :admins, :members, :schedules
 
   resources :rooms, param: :number
 
   get 'admins/show/admins' => 'admins#show_admins'
   get 'admins/show/members' => 'admins#show_members'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
