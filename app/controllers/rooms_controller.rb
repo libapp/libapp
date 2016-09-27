@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
 
     if @room.save
-      redirect_to @room
+      redirect_to "rooms"
     else
       render 'edit'
     end
@@ -24,7 +24,7 @@ class RoomsController < ApplicationController
   def update
     @room = Room.find(params[:number])
     if @room.update(room_params)
-      redirect_to @room
+      redirect_to "rooms"
     else
       render "edit"
     end
@@ -37,7 +37,7 @@ class RoomsController < ApplicationController
   def destroy
     @room = Room.find(params[:number])
     @room.update_attribute :status, 1
-    redirect_to @room
+    redirect_to "rooms"
   end
 
   private
