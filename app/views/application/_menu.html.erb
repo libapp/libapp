@@ -3,7 +3,7 @@
 		<ul class="nav">
 			<!-- Main menu -->
 			<li class="/admins/index">
-				<a href="<%= admins_path %>"><i class="glyphicon glyphicon-home"></i> Homepage </a>
+				<a href="<%= admins_path %>"><i class="glyphicon glyphicon-home"></i> Welcome, <%= current_admin.name %> </a>
 			</li>
 			<li>
 				<a href="<%= edit_admin_path(current_admin.id) %>"><i class="glyphicon glyphicon-cog"></i> Profile</a>
