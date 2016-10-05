@@ -57,6 +57,19 @@ class AdminsController < ApplicationController
     @member = Member.find(params[:member_id])
   end
 
+  def new_member
+    @member = Member.new
+  end
+
+  def create_member
+    @member = Member.new(params.permit(:email, :name, :password))
+    if @member.save
+      redirect_to "/admins"
+    else
+      render 'new_member'
+    end
+  end
+
   private
 
   def admin_params
