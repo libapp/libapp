@@ -31,7 +31,7 @@
           <% @schedules.each do |schedule| %>
               <tr>
                 <td><%= schedule.member_id %></td>
-                <% member = Member.find_by_id(schedule.member_id)%>
+                <% member = Member.find_by_id(schedule.member_id) %>
                 <td><%= member.name %></td>
                 <td><%= member.email %></td>
                 <td><%= schedule.start_at %></td>

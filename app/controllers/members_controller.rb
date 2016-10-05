@@ -37,6 +37,12 @@ class MembersController < ApplicationController
 
   def destroy
     @member = Member.find(params[:id])
+    schedules = Schedule.where(:member_id => @member.id)
+
+    schedules.each do |schedule|
+      schedule.destroy!
+    end
+
     @member.destroy!
     redirect_to '/admins/show/members'
   end
