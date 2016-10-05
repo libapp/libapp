@@ -126,7 +126,7 @@ class SchedulesController < ApplicationController
       redirect_to "/schedules/history"
 
     else
-      redirect_to "/admins/show/members"
+      redirect_to "/admins"
     end
   end
 

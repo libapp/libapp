@@ -1,21 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Room App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <title>Room App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  </head>
-  <body>
-  	<%= render 'navbar' %>
-    <div class="page-content">
-    	<div class="row">
-		  <%= render 'menu' %>
-		  <div class="col-md-10">
-	        <%= render 'form' %>
-	        <hr>
-		  </div>
-		</div>
+</head>
+<body>
+<%= render 'navbar' %>
+<div class="page-content">
+  <div class="row">
+    <%= render 'menu' %>
+    <div class="col-md-10">
+      <div class="page-content container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <div class="login-wrapper">
+              <div class="box">
+                <div class="content-wrap">
+                  <h6>Create a new room</h6>
+                  <%= bootstrap_form_for(@room) do |f| %>
+                      <% if @room.errors.any? %>
+                          <div id="error_explanation">
+                            <h2><%= pluralize(@room.errors.count, "error") %> prohibited
+                              this room from being saved:</h2>
+                            <ul>
+                              <% @room.errors.full_messages.each do |msg| %>
+                                  <li><%= msg %></li>
+                              <% end %>
+                            </ul>
+                          </div>
+                      <% end %>
+                      <%= f.text_field :number, class: "form-control" %>
+                      <%= f.text_area :size, class: "form-control" %>
+                      <%= f.text_area :building, class: "form-control" %>
+                      <%= f.submit "Submit", class: "btn btn-primary" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <%= render 'footer' %>
-  </body>
+  </div>
+</div>
+<%= render 'footer' %>
+</body>
 </html>
