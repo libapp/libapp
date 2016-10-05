@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Room App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<%= render 'navbar' %>
+
+<div class="page-content">
+  <div class="row">
+    <%= render 'menu' %>
+    <div class="col-md-10">
+
+      <!-- Page Features -->
+      <div class="row text-center">
+
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Start at</th>
+            <th>End at</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @schedules.each do |schedule| %>
+              <tr>
+                <td><%= schedule.member_id %></td>
+                <% member = Member.find_by_id(schedule.member_id)%>
+                <td><%= member.name %></td>
+                <td><%= member.email %></td>
+                <td><%= schedule.start_at %></td>
+                <td><%= schedule.end_at %></td>
+                <% if schedule.status == 0 && (schedule.start_at > Time.new || (schedule.end_at > Time.new && schedule.start_at < Time.new)) %>
+                    <td><%= link_to 'Release', schedule_path(schedule), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% elsif schedule.status == 1 %>
+                    <td>Released</td>
+                <% elsif schedule.end_at < Time.new %>
+                    <td>Used</td>
+                <% end %>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+      </div>
+
+      <!-- /.row -->
+
+    </div>
+  </div>
+</div>
+<%= render 'footer' %>
+</body>
+</html>

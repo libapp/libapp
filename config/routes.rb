@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'admins/member/new' => 'admins#new_member'
   post 'admins/member/create' => 'admins#create_member'
 
+  get 'rooms/history' => 'rooms#history'
+
   resources :admins, :members, :schedules
 
   resources :rooms, param: :number

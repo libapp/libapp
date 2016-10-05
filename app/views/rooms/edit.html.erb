@@ -17,6 +17,7 @@
                 <div class="login-wrapper">
                   <div class="box">
                     <div class="content-wrap">
+                      <h6>Show and edit room</h6>
                       <%= bootstrap_form_for(@room) do |f| %>
                           <% if @room.errors.any? %>
                               <div id="error_explanation">
@@ -29,18 +30,9 @@
                                 </ul>
                               </div>
                           <% end %>
-                          <p>
-                            <%= f.text_field :number, class: "form-control" %>
-                          </p>
-                          <p>
-                            <%= f.text_area :size, class: "form-control" %>
-                          </p>
-                          <p>
-                            <%= f.text_area :building, class: "form-control" %>
-                          </p>
-                          <p>
-                            <%= f.text_area :admin, class: "form-control" %>
-                          </p>
+                          <%= f.text_field :number, class: "form-control" %>
+                          <%= f.text_area :size, class: "form-control" %>
+                          <%= f.text_area :building, class: "form-control" %>
                           <%= f.submit "Submit", class: "btn btn-primary" %>
                       <% end %>
                     </div>

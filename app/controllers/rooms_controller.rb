@@ -40,6 +40,11 @@ class RoomsController < ApplicationController
     redirect_to "/rooms"
   end
 
+  def history
+    @schedules = Schedule.where(:room_number => params[:room_number])
+    @schedules.reverse_order!
+  end
+
   private
 
   def room_params
