@@ -36,7 +36,7 @@ class RoomsController < ApplicationController
 
   def destroy
     @room = Room.find(params[:number])
-    @room.update_attribute :status, 1
+    @room.destroy!
     redirect_to "/rooms"
   end
 

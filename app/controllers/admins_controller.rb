@@ -38,7 +38,7 @@ class AdminsController < ApplicationController
 
   def destroy
     @admin = Admin.find(params[:id])
-    @admin.update_attribute :status, 1
+    @admin.destroy!
     redirect_to "/admins/show/admins"
   end
 
