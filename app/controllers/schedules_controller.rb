@@ -39,6 +39,11 @@ class SchedulesController < ApplicationController
   end
 
   def index
+
+      @building = params[:building] == nil ? 'all' : params[:building] == 0 ? 'D.H.Hill Library' : 'James.B.Hunt Library'
+      @size     = params[:size]     == nil ? 'all' : params[:size]
+
+
     if(params[:member_id]) != nil
       @member = Member.find(params[:member_id])
     else
