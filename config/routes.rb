@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 
   get 'schedules/history' => 'schedules#history'
   get 'schedules/show_room' => 'schedules#show_room'
-  get 'admins/members/profile' => 'admins#members_profile'
+  get 'admins/member/profile' => 'admins#members_profile'
+  get 'admins/member/history' => 'admins#members_history'
+  get 'admins/member/new' => 'admins#new_member'
+  post 'admins/member/create' => 'admins#create_member'
 
   resources :admins, :members, :schedules
 
@@ -23,10 +26,6 @@ Rails.application.routes.draw do
 
   get 'admins/show/admins' => 'admins#show_admins'
   get 'admins/show/members' => 'admins#show_members'
-
-  get 'admins/member/new' => 'admins#new_member'
-  post 'admins/member/create' => 'admins#create_member'
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

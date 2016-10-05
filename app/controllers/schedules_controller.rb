@@ -106,7 +106,12 @@ class SchedulesController < ApplicationController
     end
 
     schedule.update_attribute :status, 1
-    redirect_to "/schedules/history"
+
+    if session[:member_id] != nil
+      redirect_to "/schedules/history"
+    else
+      redirect_to "/admins/show/members"
+    end
   end
 
   def history
