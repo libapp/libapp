@@ -12,6 +12,7 @@ class SchedulesController < ApplicationController
 
     flag = false
     schedules = Schedule.where(:member_id => @schedule.member_id, :status => 0)
+    @member = Member.find(@schedule.member_id)
     schedules.each do |schedule|
       if schedule.start_at > Time.new
         flag = true
@@ -23,6 +24,7 @@ class SchedulesController < ApplicationController
       redirect_to '/schedules'
     else
       if @schedule.save!
+        ReservationMailer.reservation_mail(@member).deliver
         redirect_to '/schedules/history'
       else
         flash[:error] = "Fail"
@@ -101,14 +103,18 @@ class SchedulesController < ApplicationController
 
   def destroy
     schedule = Schedule.find(params[:id])
+
     if schedule.end_at > Time.new && schedule.start_at < Time.new
       schedule.update_attribute :end_at, Time.new
     end
 
     schedule.update_attribute :status, 1
-
+    @member = Member.find(schedule.member_id)
+    ReservationMailer.release_mail(@member).deliver
     if session[:member_id] != nil
+
       redirect_to "/schedules/history"
+
     else
       redirect_to "/admins/show/members"
     end
