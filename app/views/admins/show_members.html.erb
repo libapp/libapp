@@ -38,6 +38,7 @@
 						        <td><%= link_to 'Show', "/admins/member/profile?member_id=#{member.id}" %></td>
                     <td><%= link_to 'History', "/admins/member/history?member_id=#{member.id}" %></td>
 						        <td><%= link_to 'Delete', member_path(member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td><%= link_to 'Reserve', "/schedules?member_id=#{member.id}"%></td>
 						      </tr>
 							<% end %>
 						</tbody>

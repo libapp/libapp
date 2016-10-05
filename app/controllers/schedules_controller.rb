@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   def new
+    @member = Member.find(params[:member_id])
     @schedule = Schedule.new
     @schedule["member_id"] = params[:member_id]
     @schedule["room_number"] = params[:room_number]
@@ -19,13 +20,17 @@ class SchedulesController < ApplicationController
       end
     end
 
-    if flag
+    if flag && current_member!=nil
       flash[:error] = "You can only book one room at a time"
       redirect_to '/schedules'
     else
       if @schedule.save!
         ReservationMailer.reservation_mail(@member).deliver
-        redirect_to '/schedules/history'
+        if current_member == nil
+          redirect_to "/admins/show/members"
+        else
+          redirect_to '/schedules/history'
+        end
       else
         flash[:error] = "Fail"
         redirect_to '/schedules'
@@ -34,6 +39,11 @@ class SchedulesController < ApplicationController
   end
 
   def index
+    if(params[:member_id]) != nil
+      @member = Member.find(params[:member_id])
+    else
+      @member = current_member
+    end
     if params[:date] == nil
       @date = Time.now
     else

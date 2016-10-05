@@ -3,10 +3,10 @@
 		<ul class="nav">
 			<!-- Main menu -->
 			<li class="/members/index">
-				<a href="<%= members_path %>"><i class="glyphicon glyphicon-home"></i> Welcome, <%= current_member.name %> </a>
+				<a href="<%= members_path %>"><i class="glyphicon glyphicon-home"></i> Welcome, <%= @member.name %> </a>
 			</li>
 			<li>
-				<a href="<%= edit_member_path(current_member) %>"><i class="glyphicon glyphicon-cog"></i> Profile </a>
+				<a href="<%= edit_member_path(@member) %>"><i class="glyphicon glyphicon-cog"></i> Profile </a>
 			</li>
 			<li>
 				<a href="/schedules"><i class="glyphicon glyphicon-calendar"></i> Reservation </a>
