@@ -37,6 +37,14 @@ class RoomsController < ApplicationController
   def destroy
     @room = Room.find(params[:number])
     @room.destroy!
+    shedules = Schedule.where(:room_number => @room.number)
+
+    shedules.each do |schedule|
+      if schedule.status == 0 && (schedule.start_at > Time.new || (schedule.end_at > Time.new && schedule.start_at < Time.new))
+        ReservationMailer.release_mail(Member.find(schedule.member_id)).deliver
+      end
+      schedule.destroy!
+    end
     redirect_to "/rooms"
   end
 
