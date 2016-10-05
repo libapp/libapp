@@ -89,7 +89,7 @@
 
                 <% 14.times do |i| %>
                     <% if schedules[i] != 1 && ((schedules[i+1] != 1 && i<13) || (schedules[i-1] != 1 && i > 0)) %>
-                      <td><a href="schedules/new?member_id=<%= current_member.id %>&room_number=<%= room_number %>&start_at=<%= @date.beginning_of_day + (i+8).hours %>&end_at=<%= @date.beginning_of_day + (i+10).hours %>"><i class="glyphicon glyphicon-ok-sign"></i> </a></td>
+                      <td><a href="schedules/new?member_id=<%= @member.id%>&room_number=<%= room_number %>&start_at=<%= @date.beginning_of_day + (i+8).hours %>&end_at=<%= @date.beginning_of_day + (i+10).hours %>"><i class="glyphicon glyphicon-ok-sign"></i> </a></td>
                     <% else %>
                       <td><i class="glyphicon glyphicon-remove-sign"></i></td>
                     <% end %>
