@@ -57,6 +57,11 @@ class AdminsController < ApplicationController
     @member = Member.find(params[:member_id])
   end
 
+  def members_history
+    @schedules = Schedule.where(:member_id => params[:member_id])
+    @schedules.reverse_order!
+  end
+
   def new_member
     @member = Member.new
   end
