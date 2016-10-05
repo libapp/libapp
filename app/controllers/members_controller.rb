@@ -37,7 +37,7 @@ class MembersController < ApplicationController
 
   def destroy
     @member = Member.find(params[:id])
-    @member.update_attribute :status, 1
+    @member.destroy!
     redirect_to '/admins/show/members'
   end
 

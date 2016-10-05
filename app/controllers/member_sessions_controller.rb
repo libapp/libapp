@@ -6,7 +6,7 @@ class MemberSessionsController < ApplicationController
   def create
     @member = Member.find_by_email(params[:email])
     # If the member exists AND the password entered is correct.
-    if @member && @member.authenticate(params[:password])
+    if @member && @member.status == '' && @member.authenticate(params[:password])
       # Save the member id inside the browser cookie. This is how we keep the admin
       # logged in when they navigate around our website.
       session[:admin_id] = nil
