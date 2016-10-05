@@ -26,7 +26,6 @@
 								<th>Email</th>
 							    <th>Name</th>
 							    <th>Level</th>
-							    <th>Status</th>
 							    <th colspan="3"></th>
 							</tr>
 						</thead>
@@ -36,7 +35,6 @@
 						        <td><%= admin.email %></td>
 						        <td><%= admin.name %></td>
 						        <td><% if admin.level == 0 %> Super admin <% else %> Normal admin <% end %></td>
-						        <td><% if admin.status == 0 %> Default <% else %> Deleted <% end %></td>
 						        <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
 						        <td><%= link_to 'Delete', admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 						      </tr>

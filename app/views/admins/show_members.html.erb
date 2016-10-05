@@ -25,7 +25,6 @@
 							<tr>
 								<th>Email</th>
     							<th>Name</th>
-    							<th>Status</th>
    								<th colspan="4"></th>
 							</tr>
 						</thead>
@@ -34,7 +33,6 @@
 						      <tr>
 						        <td><%= member.email %></td>
 						        <td><%= member.name %></td>
-						        <td><% if member.status == 0 %> Default <% else %> Deleted <% end %></td>
 						        <td><%= link_to 'Show', "/admins/member/profile?member_id=#{member.id}" %></td>
                     <td><%= link_to 'History', "/admins/member/history?member_id=#{member.id}" %></td>
 						        <td><%= link_to 'Delete', member_path(member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
