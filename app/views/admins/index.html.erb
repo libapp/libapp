@@ -10,27 +10,41 @@
     	<div class="row">
 		  <%= render 'menu' %>
         <div class="col-md-10">
-          <div class="row">
-            <div class="col-md-6 panel-warning">
-              <div class="content-box-header panel-heading">
-                <div class="panel-title">Administrator Rules</div>
-              </div>
               <div class="content-box-large box-with-header">
                 <div class="panel-body">
-                  The NCSU exists for the purpose of public education. The School is a private institution and retains the right to revoke the permission of people to enter and use the estate if they are engaging in behaviour that is criminal, prejudices public safety, breaches the School’s rules and procedures or diminishes or disrupts the experience of students through the misuse of School facilities.
-                  <br><br>
-                  The Library is open for the purpose of study and research to current members of the School and other groups and individuals according to the Library's admissions policy.
-                  <br><br>
-                  All users must possess a current Library card and show it on request to Library staff and Security. Library users are responsible for the use of their Library card and should not allow others to use it. Users who are found to have allowed entry to unauthorised people will be subject to disciplinary procedures (see Enforcement below).
-                  <br><br>
-                  Applicants for a Library card will be required to provide evidence of identification and status. See the Membership pages for full admissions policy details.
-                  Children under 12 are not allowed beyond the Library entrance turnstiles.
-                  <br><br>
-                <p><a class="btn btn-primary btn-lg" href="http://www.merriam-webster.com/dictionary/rule" role="button">Administration Rules</a></p>
+                  <h4><strong>Description</strong></h4>
+                  <h5>Room App is a open source web application that provides library room reservation functions. The application includes 2 subsystems which are member and admin. A new user can use the sign up functionality to create a new account, and A admin account can only be add through inserting in database by system manager.</h5>
+                  <br>
+
+                  <h4><strong>Frequently asked questions</strong></h4>
+                  <h5>
+                    <br>
+                    Question1: The user is limited to reserve 1 room on default, what if I want to let a user to reserve multiple rooms as a admin?
+                    <br>
+                    Answer: Admin can help members to reserve extra rooms in the member manage page.
+                    <br>
+
+                    <br>
+                    Question2: How will I get notification if I reserve this room successfully?
+                    <br>
+                    Answer: Once the room is reserved and released, the user will get a email notification automatically.
+                    <br>
+
+                    <br>
+                    Question3: What happens to the library member attached to the room?
+                    <br>
+                    Answer: The library member and the room are bound once the room is booked, and it can be observed on member's history.
+                    <br>
+
+                    <br>
+                    Question4: What happens to the history of a library member when the room is deleted?
+                    <br>
+                    Answer: The reservation will be canceled and the member's history will be updated if the room is deleted.
+                    <br>
+                  </h5>
+
                 </div>
               </div>
-            </div>
-          </div>
 		    </div>
 		  </div>
     </div>

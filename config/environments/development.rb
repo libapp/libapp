@@ -43,7 +43,7 @@ Rails.application.configure do
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
-    :domain               => "localhost:3000",
+    :domain               => "52.43.181.192:3000",
     :port                 => 587,
     :user_name            => 'libapp517@gmail.com',
     :password             => 'csc517libapp',

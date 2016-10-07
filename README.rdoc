@@ -1,30 +1,57 @@
-== README
-===================================================================================
-Admin test account: Email: 'admin@lib.app', Password: 'foobar'
-===================================================================================
-This README would normally document whatever steps are necessary to get the
-application up and running.
+= \Room App - Library Reservation System
+https://github.com/MILKSHAK/image/blob/master/passing.png
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+home :: https://github.com/libapp/libapp#room-app---library-reservation-system
+link :: http://52.43.181.192:3000/
+version :: Ruby 2.2.4
+admin :: Email: 'admin@lib.app', Password: 'foobar'
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== Description
+
+Room App is a open source web application that provides library room reservation functions. The application includes 2 subsystems which are member and admin. A new user can use the sign up functionality to create a new account, and A admin account can only be add through inserting in database by system manager.
+
+== Configuration
+
+Use the +bundle+ +install+ command to get the program installed
+
+  $ bundle install
+
+USe the +rake+ command to create a local database
+
+  $ rake db:migrate
+
++rake+ the seeds.rb file to get the pre-configuration of the database
+
+  $ rake db:seed
+  
+Launch the rails server, and then the web page will be available at +localhost+:3000
+
+  $ rails s
+  
+The welcome page should looks like this:
+https://github.com/MILKSHAK/image/blob/master/homepage.png
+
+== FAQ
+Question: The user is limited to reserve 1 room on default, what if I want to let a user to reserve multiple rooms as a admin?
+  
+  Answer: Admin can help members to reserve extra rooms in the member manage page.
+
+https://github.com/MILKSHAK/image/blob/master/Member.png
+
+Question: How will I get notification if I reserve this room successfully?
+
+  Answer: Once the room is reserved and released, the user will get a email notification automatically.
+  
+https://github.com/MILKSHAK/image/blob/master/Mail1.jpg 
+https://github.com/MILKSHAK/image/blob/master/Mail2.jpg
+
+Question: What happens to the library member attached to the room?
+
+  Answer: The library member and the room are bound once the room is booked, and it can be observed on member's history.
+
+Question: What happens to the history of a library member when the room is deleted?
+
+  Answer: The reservation will be canceled and the member's history will be updated if the room is deleted.
+
+https://github.com/MILKSHAK/image/blob/master/History.png
