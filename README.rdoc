@@ -6,6 +6,10 @@ link :: http://52.43.181.192:3000/
 version :: Ruby 2.2.4
 admin :: Email: 'admin@lib.app', Password: 'foobar'
 
+== Contact
+Xinghua Ma: xma5@ncsu.edu
+Shufan Kang: skang7@ncsu.edu
+Qiaoxue Xue: qxue4@ncsu.edu
 
 == Description
 
