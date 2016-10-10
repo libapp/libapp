@@ -6,13 +6,6 @@ link :: http://52.43.181.192:3000/
 version :: Ruby 2.2.4
 admin :: Email: 'admin@lib.app', Password: 'foobar'
 
-== Contact
-Xinghua Ma: xma5@ncsu.edu
-
-Shufan Kang: skang7@ncsu.edu
-
-Qiaoxue Xue: qxue4@ncsu.edu
-
 == Description
 
 Room App is a open source web application that provides library room reservation functions. The application includes 2 subsystems which are member and admin. A new user can use the sign up functionality to create a new account, and A admin account can only be add through inserting in database by system manager.
@@ -61,3 +54,11 @@ Question: What happens to the history of a library member when the room is delet
   Answer: The reservation will be canceled and the member's history will be updated if the room is deleted.
 
 https://github.com/MILKSHAK/image/blob/master/History.png
+
+
+== Contact
+Xinghua Ma: xma5@ncsu.edu
+
+Shufan Kang: skang7@ncsu.edu
+
+Qiaoxue Xue: qxue4@ncsu.edu
