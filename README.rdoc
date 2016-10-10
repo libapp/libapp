@@ -8,7 +8,9 @@ admin :: Email: 'admin@lib.app', Password: 'foobar'
 
 == Contact
 Xinghua Ma: xma5@ncsu.edu
+
 Shufan Kang: skang7@ncsu.edu
+
 Qiaoxue Xue: qxue4@ncsu.edu
 
 == Description
